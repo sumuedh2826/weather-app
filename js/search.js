@@ -1,6 +1,7 @@
 (function () {
   var searchInput = document.getElementById("city-search-input");
   var searchBtn = document.getElementById("city-search-btn");
+  var clearBtn = document.getElementById("city-clear-btn");
   var loadingEl = document.getElementById("search-loading");
   var errorEl = document.getElementById("search-error");
 
@@ -15,6 +16,9 @@
     loadingEl.hidden = !loading;
     searchInput.disabled = loading;
     searchBtn.disabled = loading;
+    if (clearBtn) {
+      clearBtn.disabled = loading;
+    }
   }
 
   function hideError() {
@@ -34,16 +38,28 @@
     return "Unable to fetch weather data. Check your connection and try again.";
   }
 
-  function handleSearch() {
-    if (isLoading) {
-      return;
+  function renderWeatherResult(result) {
+    renderWeatherCard(result);
+    renderForecastStrip(result);
+    renderInsightsPanel(result);
+  }
+
+  function loadWeather(cityName, options) {
+    var opts = options || {};
+    var query = cityName.trim();
+
+    if (!query) {
+      if (opts.isAutoLoad) {
+        clearLastCity();
+        resetApplicationState();
+      }
+      return Promise.resolve();
     }
 
-    var cityName = searchInput.value.trim();
     hideError();
     setLoading(true);
 
-    fetchWeatherByCity(cityName)
+    return fetchWeatherByCity(query)
       .then(function (result) {
         console.log(
           "Weather data for " + result.location.name + ", " + result.location.country + ":",
@@ -51,17 +67,48 @@
         );
         console.log("Forecast response:", result.weather);
 
-        renderWeatherCard(result);
-        renderForecastStrip(result);
-        renderInsightsPanel(result);
+        searchInput.value = query;
+        renderWeatherResult(result);
+        saveLastCity(query);
       })
       .catch(function (error) {
         console.error("Weather fetch failed:", error);
+
+        if (opts.isAutoLoad) {
+          clearLastCity();
+          resetApplicationState();
+        }
+
         showError(getErrorMessage(error));
       })
       .finally(function () {
         setLoading(false);
       });
+  }
+
+  function handleSearch() {
+    if (isLoading) {
+      return;
+    }
+    loadWeather(searchInput.value, { isAutoLoad: false });
+  }
+
+  function handleClear() {
+    if (isLoading) {
+      return;
+    }
+    clearLastCity();
+    resetApplicationState();
+  }
+
+  function initAutoLoad() {
+    var savedCity = getLastCity();
+    if (!savedCity) {
+      return;
+    }
+
+    searchInput.value = savedCity;
+    loadWeather(savedCity, { isAutoLoad: true });
   }
 
   searchBtn.addEventListener("click", handleSearch);
@@ -72,4 +119,10 @@
       handleSearch();
     }
   });
+
+  if (clearBtn) {
+    clearBtn.addEventListener("click", handleClear);
+  }
+
+  initAutoLoad();
 })();

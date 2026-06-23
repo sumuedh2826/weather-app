@@ -112,6 +112,31 @@
 .search-input::placeholder {
   color: var(--color-placeholder);
 }
+.search-clear-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  background: var(--color-input-bg);
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.search-clear-btn:hover:not(:disabled) {
+  color: var(--color-text);
+  border-color: var(--color-accent-teal);
+}
+
+.search-clear-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
 
 .search-btn {
   display: inline-flex;
