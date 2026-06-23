@@ -492,91 +492,142 @@
   color: var(--color-accent-teal);
 }
 
-/* ── Responsive ── */
 
-/* Tablet */
-@media (max-width: 768px) {
-  .weather-card,
-  .insights-section {
-    padding: 1.25rem 1.5rem;
-  }
-
-  .temperature {
-    font-size: 3.25rem;
-  }
-
-  .temperature-unit {
-    font-size: 2.5rem;
-  }
+/* ── Theme transition targets ── */
+.site-header,
+.site-footer,
+.card,
+.weather-card,
+.forecast-card,
+.insights-section,
+.stat-badge,
+.search-input,
+.search-btn,
+.search-clear-btn,
+.search-error {
+  transition: var(--transition-theme);
 }
 
-/* Mobile */
-@media (max-width: 600px) {
-  .weather-card__body {
-    flex-direction: column;
-    align-items: stretch;
-  }
+/* ── Interactive states ── */
 
-  .weather-stats {
-    width: 100%;
-    min-width: 0;
-    flex-shrink: 1;
-  }
+/* Navigation */
+.nav-link {
+  transition: var(--transition-interactive);
+  border-radius: 0.25rem;
 }
 
-@media (max-width: 480px) {
-  /* Collapse header nav on small screens (M6 requirement) */
-  .main-nav {
-    display: none;
-  }
+.nav-link:hover {
+  color: var(--color-text-on-dark);
+}
 
-  .search-bar {
-    flex-direction: column;
-  }
+.nav-link:focus-visible {
+  outline: 2px solid var(--color-accent-teal);
+  outline-offset: 3px;
+}
 
-  .search-btn {
-    width: 100%;
-    justify-content: center;
-    padding: 0.85rem 1rem;
-  }
+.nav-link:active {
+  opacity: 0.85;
+}
 
-  .weather-card,
-  .insights-section {
-    padding: 1.25rem 1rem;
-  }
+/* Theme toggle */
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--color-accent-teal);
+  outline-offset: 2px;
+}
 
-  .temperature {
-    font-size: 3rem;
-  }
+.theme-toggle:active {
+  transform: scale(0.95);
+}
 
-  .temperature-unit {
-    font-size: 2.25rem;
-  }
+/* Search input — focus-visible only */
+.search-input:focus {
+  outline: none;
+}
 
-  /* Footer stacks — no horizontal scroll */
-  .footer-inner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+.search-input:focus-visible {
+  outline: 2px solid var(--color-accent-teal);
+  outline-offset: 2px;
+  border-color: var(--color-accent-teal);
+}
 
-  .footer-nav {
-    width: 100%;
-  }
+/* Search button */
+.search-btn:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+}
 
-  .insight-row {
-    grid-template-columns: 3rem 1fr auto;
-    gap: 0.5rem;
-    font-size: 0.8rem;
-  }
+.search-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
 
-  /* Forecast scrolls inside its own box only, not the whole page */
-  .forecast-section {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-  }
+/* Clear button */
+.search-clear-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
 
-  .forecast-strip {
-    min-width: 22rem;
-  }
+.search-clear-btn:focus-visible {
+  outline: 2px solid var(--color-accent-teal);
+  outline-offset: 2px;
+}
+
+/* Weather card */
+.weather-card {
+  transition: var(--transition-theme), box-shadow 200ms ease;
+}
+
+.weather-card:not(.weather-card--empty):hover {
+  box-shadow: 0 6px 24px var(--color-shadow);
+}
+
+/* Forecast cards */
+.forecast-card {
+  transition: var(--transition-theme), transform 200ms ease, box-shadow 200ms ease;
+  cursor: default;
+}
+
+.forecast-card:hover {
+  box-shadow: 0 4px 16px var(--color-shadow);
+  transform: translateY(-2px);
+}
+
+.forecast-card:focus-within {
+  outline: 2px solid var(--color-accent-teal);
+  outline-offset: 2px;
+}
+
+.forecast-card:active {
+  transform: translateY(0);
+}
+
+/* Insight rows */
+.insight-row {
+  transition: background-color 200ms ease;
+  border-radius: 0.5rem;
+}
+
+.insight-row:hover {
+  background-color: var(--color-stat-bg);
+}
+
+/* Footer links */
+.footer-nav a {
+  transition: var(--transition-interactive);
+  border-radius: 0.25rem;
+  padding: 0.15rem 0.25rem;
+}
+
+.footer-nav a:focus-visible {
+  outline: 2px solid var(--color-accent-teal);
+  outline-offset: 2px;
+}
+
+.footer-nav a:active {
+  opacity: 0.8;
+}
+
+/* Logo */
+.logo:focus-visible {
+  outline: 2px solid var(--color-accent-teal);
+  outline-offset: 3px;
+  border-radius: 0.25rem;
 }

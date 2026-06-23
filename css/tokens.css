@@ -36,6 +36,11 @@
   --color-temp-cold: #3b82f6;
   --color-temp-mild: #2b2d42;
   --color-temp-hot: #e76f51;
+
+    /* Transitions & focus */
+  --transition-theme: background-color 250ms ease, color 250ms ease, border-color 250ms ease, box-shadow 250ms ease;
+  --transition-interactive: background-color 200ms ease, color 200ms ease, border-color 200ms ease, box-shadow 200ms ease, opacity 200ms ease;
+  --focus-ring: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-accent-teal);
 }
 
 [data-theme="dark"] {
@@ -70,4 +75,9 @@
   --color-temp-cold: #60a5fa;
   --color-temp-mild: #e8eaf0;
   --color-temp-hot: #f4a261;
+
+    /* Transitions & focus */
+  --transition-theme: background-color 250ms ease, color 250ms ease, border-color 250ms ease, box-shadow 250ms ease;
+  --transition-interactive: background-color 200ms ease, color 200ms ease, border-color 200ms ease, box-shadow 200ms ease, opacity 200ms ease;
+  --focus-ring: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-accent-teal);
 }
