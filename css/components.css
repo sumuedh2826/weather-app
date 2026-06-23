@@ -64,6 +64,26 @@
 [data-theme="dark"] .icon-moon { display: none; }
 
 /* ── Search ── */
+.search-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.search-error {
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-error-border);
+  background: var(--color-error-bg);
+  color: var(--color-error-text);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.search-error[hidden] {
+  display: none;
+}
+
 .search-bar {
   display: flex;
   gap: 0.75rem;
@@ -77,6 +97,16 @@
   border-radius: 0.75rem;
   background: var(--color-input-bg);
   color: var(--color-text);
+}
+
+.search-input:focus {
+  outline: 2px solid var(--color-accent-teal);
+  outline-offset: 2px;
+}
+
+.search-input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 .search-input::placeholder {
@@ -95,10 +125,45 @@
   font-weight: 600;
   font-size: 0.8rem;
   letter-spacing: 0.04em;
-  cursor: not-allowed;
-  opacity: 0.85;
+  cursor: pointer;
   flex-shrink: 0;
   white-space: nowrap;
+}
+
+.search-btn:hover:not(:disabled) {
+  background: var(--color-accent-teal-hover);
+}
+
+.search-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.search-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.search-loading[hidden] {
+  display: none;
+}
+
+.search-spinner {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid var(--color-border);
+  border-top-color: var(--color-accent-teal);
+  border-radius: 50%;
+  animation: search-spin 0.8s linear infinite;
+}
+
+@keyframes search-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ── Cards ── */

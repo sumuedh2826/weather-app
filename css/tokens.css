@@ -27,6 +27,10 @@
 
   /* Nav */
   --color-nav-active: #f4a261;
+
+  --color-error-bg: #fde8e8;
+  --color-error-text: #b42318;
+  --color-error-border: #f5c2c0;
 }
 
 [data-theme="dark"] {
@@ -52,4 +56,8 @@
   --color-placeholder: #7c8499;
 
   --color-nav-active: #f4a261;
+  
+  --color-error-bg: #3b1f1f;
+  --color-error-text: #fca5a5;
+  --color-error-border: #7f1d1d;
 }
