@@ -103,10 +103,16 @@
       </section>
 
       <!-- Current weather card (placeholder) -->
-      <section class="weather-card card" aria-label="Current weather">
+            <!-- Current weather card -->
+      <section
+        id="weather-card"
+        class="weather-card card weather-card--empty"
+        aria-label="Current weather"
+        hidden
+      >
         <div class="weather-card__top">
           <div class="weather-card__location">
-            <h1 class="city-name">Copenhagen, Denmark</h1>
+            <h1 id="city-name" class="city-name">—</h1>
             <p class="current-date">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
@@ -114,19 +120,19 @@
                 <line x1="8" y1="2" x2="8" y2="6"></line>
                 <line x1="3" y1="10" x2="21" y2="10"></line>
               </svg>
-              Monday, Oct 24
+              <span id="current-date-text">—</span>
             </p>
           </div>
         </div>
 
         <div class="weather-card__body">
           <div class="weather-card__primary">
-            <p class="temperature">
-              12<span class="temperature-unit">°</span><span class="temperature-suffix">c</span>
+            <p id="temperature-display" class="temperature temperature--mild">
+              <span id="temperature-value">—</span><span class="temperature-unit">°</span><span class="temperature-suffix">c</span>
             </p>
             <div class="condition">
-              <span class="condition-icon" aria-hidden="true">🌧️</span>
-              <span class="condition-label">Partly Cloudy</span>
+              <span id="condition-icon" class="condition-icon" aria-hidden="true">—</span>
+              <span id="condition-label" class="condition-label">Search for a city</span>
             </div>
           </div>
 
@@ -135,21 +141,21 @@
               <span class="stat-icon" aria-hidden="true">💧</span>
               <div>
                 <span class="stat-label">Humidity</span>
-                <span class="stat-value">64%</span>
+                <span id="humidity-value" class="stat-value">—</span>
               </div>
             </div>
             <div class="stat-badge">
               <span class="stat-icon" aria-hidden="true">💨</span>
               <div>
                 <span class="stat-label">Wind Speed</span>
-                <span class="stat-value">18 km/h</span>
+                <span id="wind-value" class="stat-value">—</span>
               </div>
             </div>
             <div class="stat-badge">
               <span class="stat-icon" aria-hidden="true">↕️</span>
               <div>
                 <span class="stat-label">Pressure</span>
-                <span class="stat-value">1012 hPa</span>
+                <span id="pressure-value" class="stat-value">—</span>
               </div>
             </div>
           </div>
@@ -265,6 +271,8 @@
 
   <script src="js/theme.js"></script>
   <script src="js/api.js"></script>
+  <script src="js/weatherCodes.js"></script>
+  <script src="js/weatherCard.js"></script>
   <script src="js/search.js"></script>
 </body>
 </html>

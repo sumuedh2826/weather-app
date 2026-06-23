@@ -45,8 +45,12 @@
 
     fetchWeatherByCity(cityName)
       .then(function (result) {
-        console.log("Weather data for " + result.location.name + ", " + result.location.country + ":", result);
+        console.log(
+          "Weather data for " + result.location.name + ", " + result.location.country + ":",
+          result
+        );
         console.log("Forecast response:", result.weather);
+        renderWeatherCard(result);
       })
       .catch(function (error) {
         console.error("Weather fetch failed:", error);

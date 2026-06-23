@@ -31,6 +31,11 @@
   --color-error-bg: #fde8e8;
   --color-error-text: #b42318;
   --color-error-border: #f5c2c0;
+
+    /* Temperature accents */
+  --color-temp-cold: #3b82f6;
+  --color-temp-mild: #2b2d42;
+  --color-temp-hot: #e76f51;
 }
 
 [data-theme="dark"] {
@@ -60,4 +65,9 @@
   --color-error-bg: #3b1f1f;
   --color-error-text: #fca5a5;
   --color-error-border: #7f1d1d;
+
+    /* Temperature accents */
+  --color-temp-cold: #60a5fa;
+  --color-temp-mild: #e8eaf0;
+  --color-temp-hot: #f4a261;
 }

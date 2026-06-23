@@ -215,10 +215,31 @@
   font-size: 3rem;
 }
 
+.temperature-value,
+.temperature-unit {
+  color: inherit;
+}
+
 .temperature-suffix {
   font-size: 1.25rem;
-  color: var(--color-accent-orange-strong);
+  color: inherit;
   vertical-align: super;
+}
+
+.temperature--cold {
+  color: var(--color-temp-cold);
+}
+
+.temperature--mild {
+  color: var(--color-temp-mild);
+}
+
+.temperature--hot {
+  color: var(--color-temp-hot);
+}
+
+.weather-card--empty .condition-label {
+  color: var(--color-text-muted);
 }
 
 .condition {
