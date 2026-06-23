@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather App</title>
+
+  <!-- Apply saved theme before paint to avoid flash -->
+  <script>
+    (function () {
+      var saved = localStorage.getItem('weather-app-theme');
+      var theme = saved === 'dark' || saved === 'light' ? saved : 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo">Weather App</a>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#" class="nav-link nav-link--active">Dashboard</a>
+        <a href="#" class="nav-link">Map</a>
+        <a href="#" class="nav-link">Education</a>
+        <a href="#" class="nav-link">Historical</a>
+      </nav>
+
+      <button
+        id="theme-toggle"
+        class="theme-toggle"
+        type="button"
+        aria-label="Switch to dark theme"
+        title="Toggle theme"
+      >
+        <!-- Moon icon (shown in light mode → click to go dark) -->
+        <svg class="icon icon-moon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <!-- Sun icon (shown in dark mode → click to go light) -->
+        <svg class="icon icon-sun" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <!-- Search (placeholder for M2) -->
+      <section class="search-section" aria-label="City search">
+        <div class="search-bar">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search for a city or meteorological station..."
+            disabled
+          />
+          <button type="button" class="search-btn" disabled>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            SEARCH
+          </button>
+        </div>
+      </section>
+
+      <!-- Current weather card (placeholder) -->
+      <section class="weather-card card" aria-label="Current weather">
+        <div class="weather-card__top">
+          <div class="weather-card__location">
+            <h1 class="city-name">Copenhagen, Denmark</h1>
+            <p class="current-date">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              Monday, Oct 24
+            </p>
+          </div>
+        </div>
+
+        <div class="weather-card__body">
+          <div class="weather-card__primary">
+            <p class="temperature">
+              12<span class="temperature-unit">°</span><span class="temperature-suffix">c</span>
+            </p>
+            <div class="condition">
+              <span class="condition-icon" aria-hidden="true">🌧️</span>
+              <span class="condition-label">Partly Cloudy</span>
+            </div>
+          </div>
+
+          <div class="weather-stats">
+            <div class="stat-badge">
+              <span class="stat-icon" aria-hidden="true">💧</span>
+              <div>
+                <span class="stat-label">Humidity</span>
+                <span class="stat-value">64%</span>
+              </div>
+            </div>
+            <div class="stat-badge">
+              <span class="stat-icon" aria-hidden="true">💨</span>
+              <div>
+                <span class="stat-label">Wind Speed</span>
+                <span class="stat-value">18 km/h</span>
+              </div>
+            </div>
+            <div class="stat-badge">
+              <span class="stat-icon" aria-hidden="true">↕️</span>
+              <div>
+                <span class="stat-label">Pressure</span>
+                <span class="stat-value">1012 hPa</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5-day forecast strip (placeholder) -->
+      <section class="forecast-section" aria-label="5-day forecast">
+        <div class="forecast-strip">
+          <article class="forecast-card forecast-card--today">
+            <span class="forecast-day">TODAY</span>
+            <span class="forecast-icon" aria-hidden="true">⛅</span>
+            <span class="forecast-temps">
+              <span class="temp-high">12°</span>
+              <span class="temp-low">8°</span>
+            </span>
+          </article>
+          <article class="forecast-card">
+            <span class="forecast-day">TUE</span>
+            <span class="forecast-icon" aria-hidden="true">🌤️</span>
+            <span class="forecast-temps">
+              <span class="temp-high">14°</span>
+              <span class="temp-low">9°</span>
+            </span>
+          </article>
+          <article class="forecast-card">
+            <span class="forecast-day">WED</span>
+            <span class="forecast-icon" aria-hidden="true">☁️</span>
+            <span class="forecast-temps">
+              <span class="temp-high">11°</span>
+              <span class="temp-low">7°</span>
+            </span>
+          </article>
+          <article class="forecast-card">
+            <span class="forecast-day">THU</span>
+            <span class="forecast-icon" aria-hidden="true">🌧️</span>
+            <span class="forecast-temps">
+              <span class="temp-high">10°</span>
+              <span class="temp-low">6°</span>
+            </span>
+          </article>
+          <article class="forecast-card">
+            <span class="forecast-day">FRI</span>
+            <span class="forecast-icon" aria-hidden="true">🌤️</span>
+            <span class="forecast-temps">
+              <span class="temp-high">13°</span>
+              <span class="temp-low">8°</span>
+            </span>
+          </article>
+        </div>
+      </section>
+
+      <!-- Hourly insights panel (placeholder) -->
+      <section class="insights-section card" aria-label="Hourly micro-data insights">
+        <header class="insights-header">
+          <h2>Hourly Micro-Data Insights</h2>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+        </header>
+
+        <ul class="insights-list">
+          <li class="insight-row">
+            <span class="insight-time">14:00</span>
+            <span class="insight-condition"><span aria-hidden="true">☀️</span> High UV Index</span>
+            <span class="insight-temp">12.4°C</span>
+          </li>
+          <li class="insight-row">
+            <span class="insight-time">15:00</span>
+            <span class="insight-condition"><span aria-hidden="true">☁️</span> Developing Cumulus</span>
+            <span class="insight-temp">12.1°C</span>
+          </li>
+          <li class="insight-row">
+            <span class="insight-time">16:00</span>
+            <span class="insight-condition"><span aria-hidden="true">💨</span> Gust Peak Recorded</span>
+            <span class="insight-temp">11.8°C</span>
+          </li>
+          <li class="insight-row">
+            <span class="insight-time">17:00</span>
+            <span class="insight-condition"><span aria-hidden="true">🌫️</span> Stratus Coverage</span>
+            <span class="insight-temp">11.2°C</span>
+          </li>
+          <li class="insight-row">
+            <span class="insight-time">18:00</span>
+            <span class="insight-condition"><span aria-hidden="true">🌧️</span> Precipitation Expected</span>
+            <span class="insight-temp">10.9°C</span>
+          </li>
+          <li class="insight-row">
+            <span class="insight-time">19:00</span>
+            <span class="insight-condition"><span aria-hidden="true">🌅</span> Clear Dusk Horizon</span>
+            <span class="insight-temp">10.5°C</span>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <strong>Weather App</strong>
+        <p>© 2024 Weather App. Precision Weather Education.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a href="#">Terms of Service</a>
+        <span aria-hidden="true">·</span>
+        <a href="#">Scientific Data Sources</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="js/theme.js"></script>
+</body>
+</html>

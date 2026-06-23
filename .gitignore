@@ -1,0 +1,23 @@
+# Python virtual environment (not needed for this project)
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+*.code-workspace
+
+# Logs
+*.log
+npm-debug.log*
+
+# Env secrets (for later milestones if any)
+.env
+.env.local

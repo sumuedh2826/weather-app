@@ -1,0 +1,468 @@
+/* ── Header ── */
+.site-header {
+  background-color: var(--color-header-bg);
+  color: var(--color-text-on-dark);
+  overflow-x: hidden;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 3.5rem;
+  padding-block: 0.75rem;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+.nav-link {
+  font-size: 0.875rem;
+  color: var(--color-text-on-dark-muted);
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+
+.nav-link--active {
+  color: var(--color-text-on-dark);
+  border-bottom-color: var(--color-nav-active);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-text-on-dark);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="light"] .icon-sun { display: none; }
+[data-theme="dark"] .icon-moon { display: none; }
+
+/* ── Search ── */
+.search-bar {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  background: var(--color-input-bg);
+  color: var(--color-text);
+}
+
+.search-input::placeholder {
+  color: var(--color-placeholder);
+}
+
+.search-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 1.25rem;
+  border: none;
+  border-radius: 0.75rem;
+  background: var(--color-accent-teal);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  cursor: not-allowed;
+  opacity: 0.85;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--color-surface);
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px var(--color-shadow);
+  border: 1px solid var(--color-border);
+}
+
+/* ── Weather card ── */
+.weather-card {
+  padding: 1.5rem 2rem;
+}
+
+.city-name {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  word-break: break-word;
+}
+
+.current-date {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.weather-card__body {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+  padding-inline: 0.25rem;
+}
+
+.temperature {
+  margin: 0;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.temperature-unit {
+  font-size: 3rem;
+}
+
+.temperature-suffix {
+  font-size: 1.25rem;
+  color: var(--color-accent-orange-strong);
+  vertical-align: super;
+}
+
+.condition {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+/* ── Stat badges ── */
+.weather-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  min-width: 11.5rem;
+  flex-shrink: 0;
+}
+
+.stat-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.1rem;
+  min-height: 3.25rem;
+  border-radius: 0.75rem;
+  background: var(--color-stat-bg);
+  font-size: 0.875rem;
+}
+
+.stat-icon {
+  font-size: 1.35rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.stat-badge div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.stat-label {
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+}
+
+.stat-value {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* ── Forecast strip ── */
+.forecast-section {
+  width: 100%;
+  min-width: 0;
+}
+
+.forecast-strip {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.65rem;
+  padding-inline: 0.25rem;
+}
+
+.forecast-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.85rem 0.35rem;
+  border-radius: 0.85rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 2px 10px var(--color-shadow);
+  text-align: center;
+  min-width: 0;
+}
+
+.forecast-card--today {
+  border-color: var(--color-accent-teal);
+  border-width: 2px;
+}
+
+.forecast-day {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+}
+
+.forecast-icon {
+  font-size: 1.25rem;
+}
+
+.forecast-temps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.temp-high {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.temp-low {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+/* ── Insights panel ── */
+.insights-section {
+  padding: 1.5rem 2rem;
+}
+
+.insights-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-inline: 0.25rem;
+}
+
+.insights-header h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.insights-header svg {
+  color: var(--color-accent-teal);
+  flex-shrink: 0;
+}
+
+.insights-list {
+  padding-inline: 0.25rem;
+}
+
+.insight-row {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.875rem;
+}
+
+.insight-row:last-child {
+  border-bottom: none;
+}
+
+.insight-time {
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.insight-condition {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 0;
+  word-break: break-word;
+}
+
+.insight-temp {
+  color: var(--color-accent-teal);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ── Footer ── */
+.site-footer {
+  background: var(--color-footer-bg);
+  border-top: 1px solid var(--color-border);
+  padding-block: 1.5rem;
+  overflow-x: hidden;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.footer-brand {
+  min-width: 0;
+}
+
+.footer-brand strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.footer-brand p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  max-width: 100%;
+}
+
+.footer-nav a {
+  white-space: nowrap;
+}
+
+.footer-nav a:hover {
+  color: var(--color-accent-teal);
+}
+
+/* ── Responsive ── */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .weather-card,
+  .insights-section {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .temperature {
+    font-size: 3.25rem;
+  }
+
+  .temperature-unit {
+    font-size: 2.5rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .weather-card__body {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .weather-stats {
+    width: 100%;
+    min-width: 0;
+    flex-shrink: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Collapse header nav on small screens (M6 requirement) */
+  .main-nav {
+    display: none;
+  }
+
+  .search-bar {
+    flex-direction: column;
+  }
+
+  .search-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.85rem 1rem;
+  }
+
+  .weather-card,
+  .insights-section {
+    padding: 1.25rem 1rem;
+  }
+
+  .temperature {
+    font-size: 3rem;
+  }
+
+  .temperature-unit {
+    font-size: 2.25rem;
+  }
+
+  /* Footer stacks — no horizontal scroll */
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-nav {
+    width: 100%;
+  }
+
+  .insight-row {
+    grid-template-columns: 3rem 1fr auto;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  /* Forecast scrolls inside its own box only, not the whole page */
+  .forecast-section {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .forecast-strip {
+    min-width: 22rem;
+  }
+}
