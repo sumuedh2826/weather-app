@@ -50,7 +50,10 @@
           result
         );
         console.log("Forecast response:", result.weather);
+
         renderWeatherCard(result);
+        renderForecastStrip(result);
+        renderInsightsPanel(result);
       })
       .catch(function (error) {
         console.error("Weather fetch failed:", error);

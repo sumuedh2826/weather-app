@@ -352,6 +352,9 @@
   font-size: 0.8rem;
   color: var(--color-text-muted);
 }
+.insights-list:empty {
+  display: none;
+}
 
 /* ── Insights panel ── */
 .insights-section {

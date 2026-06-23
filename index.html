@@ -162,54 +162,23 @@
         </div>
       </section>
 
-      <!-- 5-day forecast strip (placeholder) -->
-      <section class="forecast-section" aria-label="5-day forecast">
-        <div class="forecast-strip">
-          <article class="forecast-card forecast-card--today">
-            <span class="forecast-day">TODAY</span>
-            <span class="forecast-icon" aria-hidden="true">⛅</span>
-            <span class="forecast-temps">
-              <span class="temp-high">12°</span>
-              <span class="temp-low">8°</span>
-            </span>
-          </article>
-          <article class="forecast-card">
-            <span class="forecast-day">TUE</span>
-            <span class="forecast-icon" aria-hidden="true">🌤️</span>
-            <span class="forecast-temps">
-              <span class="temp-high">14°</span>
-              <span class="temp-low">9°</span>
-            </span>
-          </article>
-          <article class="forecast-card">
-            <span class="forecast-day">WED</span>
-            <span class="forecast-icon" aria-hidden="true">☁️</span>
-            <span class="forecast-temps">
-              <span class="temp-high">11°</span>
-              <span class="temp-low">7°</span>
-            </span>
-          </article>
-          <article class="forecast-card">
-            <span class="forecast-day">THU</span>
-            <span class="forecast-icon" aria-hidden="true">🌧️</span>
-            <span class="forecast-temps">
-              <span class="temp-high">10°</span>
-              <span class="temp-low">6°</span>
-            </span>
-          </article>
-          <article class="forecast-card">
-            <span class="forecast-day">FRI</span>
-            <span class="forecast-icon" aria-hidden="true">🌤️</span>
-            <span class="forecast-temps">
-              <span class="temp-high">13°</span>
-              <span class="temp-low">8°</span>
-            </span>
-          </article>
-        </div>
+           <!-- 5-day forecast strip -->
+      <section
+        id="forecast-section"
+        class="forecast-section"
+        aria-label="5-day forecast"
+        hidden
+      >
+        <div id="forecast-strip" class="forecast-strip"></div>
       </section>
 
-      <!-- Hourly insights panel (placeholder) -->
-      <section class="insights-section card" aria-label="Hourly micro-data insights">
+      <!-- Hourly insights panel -->
+      <section
+        id="insights-section"
+        class="insights-section card"
+        aria-label="Hourly micro-data insights"
+        hidden
+      >
         <header class="insights-header">
           <h2>Hourly Micro-Data Insights</h2>
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -217,38 +186,7 @@
           </svg>
         </header>
 
-        <ul class="insights-list">
-          <li class="insight-row">
-            <span class="insight-time">14:00</span>
-            <span class="insight-condition"><span aria-hidden="true">☀️</span> High UV Index</span>
-            <span class="insight-temp">12.4°C</span>
-          </li>
-          <li class="insight-row">
-            <span class="insight-time">15:00</span>
-            <span class="insight-condition"><span aria-hidden="true">☁️</span> Developing Cumulus</span>
-            <span class="insight-temp">12.1°C</span>
-          </li>
-          <li class="insight-row">
-            <span class="insight-time">16:00</span>
-            <span class="insight-condition"><span aria-hidden="true">💨</span> Gust Peak Recorded</span>
-            <span class="insight-temp">11.8°C</span>
-          </li>
-          <li class="insight-row">
-            <span class="insight-time">17:00</span>
-            <span class="insight-condition"><span aria-hidden="true">🌫️</span> Stratus Coverage</span>
-            <span class="insight-temp">11.2°C</span>
-          </li>
-          <li class="insight-row">
-            <span class="insight-time">18:00</span>
-            <span class="insight-condition"><span aria-hidden="true">🌧️</span> Precipitation Expected</span>
-            <span class="insight-temp">10.9°C</span>
-          </li>
-          <li class="insight-row">
-            <span class="insight-time">19:00</span>
-            <span class="insight-condition"><span aria-hidden="true">🌅</span> Clear Dusk Horizon</span>
-            <span class="insight-temp">10.5°C</span>
-          </li>
-        </ul>
+        <ul id="insights-list" class="insights-list"></ul>
       </section>
     </div>
   </main>
@@ -272,7 +210,10 @@
   <script src="js/theme.js"></script>
   <script src="js/api.js"></script>
   <script src="js/weatherCodes.js"></script>
+  <script src="js/dateUtils.js"></script>
   <script src="js/weatherCard.js"></script>
+  <script src="js/forecast.js"></script>
+  <script src="js/insights.js"></script>
   <script src="js/search.js"></script>
 </body>
 </html>
